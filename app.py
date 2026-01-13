@@ -12,14 +12,14 @@ st.markdown("Fuentes: Hugging Face Daily Papers (curados), arXiv (ML, AI, CV), M
 
 # Sidebar: Donaciones y newsletter
 with st.sidebar:
-    st.header("🚀 Apóyame")
-    st.markdown("Si te gusta esta app, ayúdame a seguir creando contenido:")
-    st.markdown("- **Newsletter**: [Suscríbete aquí](TU_LINK_NEWSLETTER)")  # Cambia por tu link (Substack, Beehiiv, etc.)
-    st.markdown("- **Ko-fi / Café**: [Comprarme un café ☕](TU_LINK_KO_FI)")
-    st.markdown("- **Crypto (Venezuela friendly)**: ")
-    st.code("TU_WALLET_ADDRESS (BTC/USDT/ETC)", language="text")
-    st.markdown("¡Gracias! Todo ayuda a seguir construyendo herramientas como esta con Grok.")
-
+    st.header("🚀 Apóyame y mejoremos esto juntos")
+    st.markdown("App creada con ❤️ y Grok desde Venezuela 🇻🇪")
+    st.markdown("Con tu apoyo activamos **resúmenes inteligentes full con Grok API** (créditos) y más features.")
+    st.markdown("- **Newsletter (Substack)**: [Suscríbete gratis para updates semanales](https://esospanas.substack.com/)")
+    st.markdown("- **Ko-fi (donaciones rápidas)**: [Comprarme un café ☕](https://ko-fi.com/esospanas)")
+    st.markdown("- **Crypto (Ethereum - desde $10+ recomendado)**: ")
+    st.code("0xc50639FC0EA4B154AbE83Bf3006c745Cbeb0bEBd", language="text")
+    st.markdown("Todo va a créditos Grok API, Premium X y más herramientas. ¡Gracias! 🇻🇪")
 # API Key de Grok (secreta)
 api_key = st.text_input("🔑 Grok API Key (opcional para resúmenes inteligentes)", type="password", help="Obtén tu key en https://x.ai/api o console.grok.com")
 client = None
