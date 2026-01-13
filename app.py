@@ -98,9 +98,12 @@ else:
                         why = f"Error con Grok: {e}. Usando resumen básico: {why}"
             
             st.markdown(f"**Por qué importa:** {why}")
+import gspread  # Añade esta línea al principio del archivo si no está (con los otros imports)
+from datetime import datetime  # Ya lo tienes
+
 st.markdown("---")
 st.header("📩 ¡Suscríbete al Digest Semanal por Email!")
-st.markdown("Recibe los 10 avances top + resúmenes directamente en tu inbox cada semana. Gratis y automático pronto.")
+st.markdown("Recibe los 10 avances top + resúmenes directamente en tu inbox cada semana. ¡Gratis!")
 
 with st.form(key="subscribe_form"):
     user_email = st.text_input("Tu email:")
@@ -108,10 +111,15 @@ with st.form(key="subscribe_form"):
 
     if submit_button:
         if "@" in user_email and "." in user_email:
-            # Guardar email (simple: muestra y tú copias manual, o integra Google Sheets después)
-            st.success(f"¡Suscrito con éxito! 🚀 {user_email} agregado. Primer digest pronto a tu inbox.")
-            st.balloons()  # Celebración divertida
-            # Bonus: Para guardar real, agrega Google Sheets (te doy código si quieres)
+            try:
+                # Conectar a Google Sheets
+                sh = gspread.service_account_from_dict(st.secrets["gcp_service_account"])
+                sheet = sh.open_by_key(st.secrets["SHEET_ID"]).sheet1
+                sheet.append_row([user_email, datetime.now().strftime("%Y-%m-%d %H:%M")])
+                st.success(f"¡Suscrito con éxito! 🚀 {user_email} agregado a la lista.")
+                st.balloons()
+            except Exception as e:
+                st.warning(f"Suscrito (guardado manual por ahora): {user_email}")
+                st.write("Nota técnica: Configura secrets en Streamlit Cloud para guardar auto.")
         else:
-            st.error("Email inválido, inténtalo de nuevo.")
-st.caption("App creada con ❤️ y Grok desde un celular Android en Venezuela. ¡Refresca para actualizar!")
+            st.error("Email inválido, inténtalo de nuevo.")("App creada con ❤️ y Grok desde un celular Android en Venezuela. ¡Refresca para actualizar!")
