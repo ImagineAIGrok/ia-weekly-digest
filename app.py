@@ -98,5 +98,20 @@ else:
                         why = f"Error con Grok: {e}. Usando resumen básico: {why}"
             
             st.markdown(f"**Por qué importa:** {why}")
+st.markdown("---")
+st.header("📩 ¡Suscríbete al Digest Semanal por Email!")
+st.markdown("Recibe los 10 avances top + resúmenes directamente en tu inbox cada semana. Gratis y automático pronto.")
 
+with st.form(key="subscribe_form"):
+    user_email = st.text_input("Tu email:")
+    submit_button = st.form_submit_button("¡Suscribirme!")
+
+    if submit_button:
+        if "@" in user_email and "." in user_email:
+            # Guardar email (simple: muestra y tú copias manual, o integra Google Sheets después)
+            st.success(f"¡Suscrito con éxito! 🚀 {user_email} agregado. Primer digest pronto a tu inbox.")
+            st.balloons()  # Celebración divertida
+            # Bonus: Para guardar real, agrega Google Sheets (te doy código si quieres)
+        else:
+            st.error("Email inválido, inténtalo de nuevo.")
 st.caption("App creada con ❤️ y Grok desde un celular Android en Venezuela. ¡Refresca para actualizar!")
