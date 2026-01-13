@@ -11,12 +11,14 @@ st.markdown("Fuentes: Hugging Face Daily Papers (curados), arXiv (ML, AI, CV) y 
 
 # Fuentes RSS confiables (incluye HF Daily Papers curados)
 feeds = [
-    "https://papers.takara.ai/api/feed",                               # Hugging Face Daily Papers (curados)
-    "https://arxiv.org/rss/cs.LG",                                     # arXiv Machine Learning
-    "https://arxiv.org/rss/cs.AI",                                     # arXiv Artificial Intelligence
-    "https://arxiv.org/rss/cs.CV",                                     # arXiv Computer Vision
-    "https://www.reddit.com/r/MachineLearning/.rss",                   # Reddit r/MachineLearning
-    "https://medium.com/feed/tag/artificial-intelligence",             # Medium AI tag (opcional, buenos artículos)
+    "https://huggingface.co/papers/rss",                         # Hugging Face Papers oficiales (si existe, sino usa el de takara)
+    "https://papers.takara.ai/api/feed",                         # HF Daily Papers curados (los mejores papers diarios)
+    "https://arxiv.org/rss/cs.LG",                               # arXiv Machine Learning
+    "https://arxiv.org/rss/cs.AI",                               # arXiv Artificial Intelligence
+    "https://arxiv.org/rss/cs.CV",                               # arXiv Computer Vision
+    "https://www.marktechpost.com/feed/",                        # MarkTechPost (excelentes resúmenes de papers)
+    "https://www.interconnects.ai/rss",                          # Interconnects (newsletter curada de avances)
+    # Quité Medium y Reddit para evitar contenido más "general/viral"
 ]
 
 @st.cache_data(ttl=86400, show_spinner=False)  # Cache de 24 horas para no recargar cada vez
